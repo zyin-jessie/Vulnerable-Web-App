@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
   <title>Document</title>
   <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
@@ -16,12 +16,46 @@
       }
   </style>
 </head>
-<body class="container-fluid d-flex vh-100 justify-content-center align-items-center">
+<body class="h-screen flex items-center justify-center">
   <form action="#" method="GET">
-    <div class="mb-3">
-      <input type="text" class="form-control" placeholder="Enter flag">
+    <div class="flex items-center justify-center gap-1">
+      <input type="text" class="border rounded-md border-[#d4d4d4] px-2 h-9 shadow-xs w-100" id="flagInput" placeholder="kiyoCTF{pl4ce_th3_fl4g_h3re}">
+      <button class="bg-black hover:bg-black/80 text-white text-sm rounded-md p-2.5 cursor-pointer confetti [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-icon lucide-send">
+          <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/>
+          <path d="m21.854 2.147-10.94 10.939"/>
+        </svg>
+      </button>
     </div>
-    <button class="btn btn-primary w-100">Submit</button>
+    <p class="text-sm text-red-500 hidden" id="error-message"></p>
   </form>
+
+  <script>
+    const submitBtn = document.querySelector(".confetti");
+    const input = document.querySelector("#flagInput");
+    const errorMessage = document.querySelector('#error-message');
+
+    submitBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const flag = input.value.trim();
+      if(flag === "") {
+        errorMessage.classList.remove("hidden");
+        errorMessage.innerHTML = "Please enter a valid flag."
+      }else {
+        if(flag === "kiyoCTF{i_d1d_it_w1th_brutef0rc3}") {
+          errorMessage.classList.add("hidden");
+          input.value = "";
+          confetti({
+            particleCount: 300,
+            spread: 250,
+            origin: { y: 0.6 },
+          });
+        }else {
+          errorMessage.innerHTML = "The flag you entered is invalid."
+          errorMessage.classList.remove("hidden");
+        }
+      }
+    })
+  </script>
 </body>
 </html>
