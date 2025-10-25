@@ -19,8 +19,11 @@
 </head>
 <body class="h-screen flex items-center justify-center">
   <form action="#" method="GET">
-    <div class="flex items-center justify-center gap-1">
-      <input type="text" class="border rounded-md border-[#d4d4d4] px-2 h-9 shadow-xs w-100" id="flagInput" placeholder="kiyoCTF{pl4ce_th3_fl4g_h3re}">
+    <div class="flex items-end justify-center gap-1">
+      <div class="flex flex-col">
+        <label for="flagInput" class="text-sm text-sm text-neutral-500 mb-1.5">Please input the flag you discovered:</label>
+        <input type="text" class="border rounded-md border-[#d4d4d4] px-2 h-9 shadow-xs w-100 placeholder-neutral-400/70" id="flagInput" placeholder="kiyoCTF{pl4ce_th3_fl4g_h3re}">
+      </div>
       <button class="bg-black hover:bg-black/80 text-white text-sm rounded-md p-2.5 confetti [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-icon lucide-send">
           <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/>
@@ -41,14 +44,14 @@
       e.preventDefault();
       const flag = input.value.trim();
       if(flag === "") {
-        input.classList.add("border-red-500");
+        input.classList.add("border-red-500", "border-2");
         errorMessage.classList.remove("hidden");
         errorMessage.innerHTML = "Please enter a valid flag."
       }else {
-        input.classList.remove("border-red-500");
+        input.classList.remove("border-red-500", "border-2");
         if(flag === "kiyoCTF{i_d1d_it_w1th_brutef0rc3}") {
           errorMessage.classList.add("hidden");
-          input.classList.remove("border-red-500");
+          input.classList.remove("border-red-500", "border-2");
           input.disabled = true;
 
           submitBtn.disabled = true;
@@ -71,7 +74,7 @@
         }else {
           errorMessage.innerHTML = "The flag you entered is invalid."
           errorMessage.classList.remove("hidden");
-          input.classList.add("border-red-500");
+          input.classList.add("border-red-500", "border-2");
         }
       }
     })
