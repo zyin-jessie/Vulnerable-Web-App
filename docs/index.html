@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../public/logo.png" type="image/x-icon">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <title>Document</title>
+  <title>Vulnerable Website</title>
   <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
@@ -22,7 +23,7 @@
     <div class="flex items-end justify-center gap-1">
       <div class="flex flex-col">
         <label for="flagInput" class="text-sm text-sm text-neutral-500 mb-1.5">Please input the flag you discovered:</label>
-        <input type="text" class="border rounded-md border-[#d4d4d4] px-2 h-9 shadow-xs w-100 placeholder-neutral-400/70" id="flagInput" placeholder="kiyoCTF{pl4ce_th3_fl4g_h3re}">
+        <input type="text" autocomplete="off" class="border rounded-md border-[#d4d4d4] px-2.5 h-9 shadow-xs w-100 placeholder-neutral-400/70 text-sm" id="flagInput" placeholder="kiyoCTF{pl4ce_th3_fl4g_h3re}">
       </div>
       <button class="bg-black hover:bg-black/80 text-white text-sm rounded-md p-2.5 confetti [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-icon lucide-send">
