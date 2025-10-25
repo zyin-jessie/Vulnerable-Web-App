@@ -39,11 +39,14 @@
       e.preventDefault();
       const flag = input.value.trim();
       if(flag === "") {
+        input.classList.add("border-red-500");
         errorMessage.classList.remove("hidden");
         errorMessage.innerHTML = "Please enter a valid flag."
       }else {
+        input.classList.remove("border-red-500");
         if(flag === "kiyoCTF{i_d1d_it_w1th_brutef0rc3}") {
           errorMessage.classList.add("hidden");
+          input.classList.remove("border-red-500");
           input.value = "";
           confetti({
             particleCount: 300,
@@ -53,6 +56,7 @@
         }else {
           errorMessage.innerHTML = "The flag you entered is invalid."
           errorMessage.classList.remove("hidden");
+          input.classList.add("border-red-500");
         }
       }
     })
